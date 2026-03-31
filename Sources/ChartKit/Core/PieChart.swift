@@ -1,36 +1,35 @@
 import SwiftUI
 
-/// A component that renders a stylized pie chart.
+/// A component that renders data as a pie chart.
+@MainActor
 public struct PieChart: View {
-    let data: [ChartData]
+    private let data: [ChartData]
+    @State private var sliceOffset: CGFloat = 0
     
     public init(data: [ChartData]) {
         self.data = data
     }
     
-    private var totalValue: Double {
-        data.reduce(0) { $0 + $1.value }
-    }
-    
     public var body: some View {
         ZStack {
-            ForEach(0..<data.count) { index in
-                let startAngle = angleForPoint(index: index)
-                let endAngle = angleForPoint(index: index + 1)
-                
-                PieSlice(startAngle: startAngle, endAngle: endAngle)
-                    .fill(data[index].color)
+            ForEach(0..<data.count, id: \.self) { index in
+                PieSlice(
+                    startAngle: angle(for: index),
+                    endAngle: angle(for: index + 1)
+                )
+                .fill(data[index].color)
             }
         }
-        .frame(width: 200, height: 200)
     }
     
-    private func angleForPoint(index: Int) -> Angle {
-        let sum = data.prefix(index).reduce(0) { $0 + $1.value }
-        return .degrees(sum / totalValue * 360)
+    private func angle(for index: Int) -> Angle {
+        let total = data.map(\.value).reduce(0, +)
+        let sum = data.prefix(index).map(\.value).reduce(0, +)
+        return Angle(degrees: (sum / total) * 360)
     }
 }
 
+@MainActor
 private struct PieSlice: Shape {
     let startAngle: Angle
     let endAngle: Angle
@@ -39,7 +38,7 @@ private struct PieSlice: Shape {
         var path = Path()
         let center = CGPoint(x: rect.midX, y: rect.midY)
         path.move(to: center)
-        path.addArc(center: center, radius: rect.width / 2, startAngle: startAngle - .degrees(90), endAngle: endAngle - .degrees(90), clockwise: false)
+        path.addArc(center: center, radius: rect.width / 2, startAngle: startAngle, endAngle: endAngle, clockwise: false)
         return path
     }
 }
