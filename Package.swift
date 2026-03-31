@@ -8,7 +8,8 @@ let package = Package(
         .iOS(.v14),
         .macOS(.v11),
         .tvOS(.v14),
-        .watchOS(.v7)
+        .watchOS(.v7),
+        .visionOS(.v1)
     ],
     products: [
         .library(
@@ -21,9 +22,5 @@ let package = Package(
             name: "ChartKit",
             dependencies: [],
             path: "Sources/ChartKit"),
-        .testTarget(
-            name: "ChartKitTests",
-            dependencies: ["ChartKit"],
-            path: "Tests/ChartKitTests"),
     ]
 )

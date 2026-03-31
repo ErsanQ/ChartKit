@@ -1,11 +1,22 @@
 import SwiftUI
 
-/// A component that renders data as a line chart.
+/// A streamlined line chart component with progressive drawing animations.
+///
+/// `LineChart` renders a sequence of numeric points as a continuous smooth line.
+///
+/// ## Usage
+/// ```swift
+/// LineChart(points: [10, 50, 30, 90, 40])
+///     .frame(height: 200)
+/// ```
 @MainActor
 public struct LineChart: View {
     private let points: [Double]
     @State private var phase: CGFloat = 0
     
+    /// Creates a new LineChart instance.
+    ///
+    /// - Parameter points: An array of doubles representing vertical plot points.
     public init(points: [Double]) {
         self.points = points
     }

@@ -1,11 +1,24 @@
 import SwiftUI
 
-/// A component that renders data as a pie chart.
+/// A stylized circular chart used for representing proportional data.
+///
+/// `PieChart` breaks down a collection of `ChartData` into colored slices.
+///
+/// ## Usage
+/// ```swift
+/// PieChart(data: [
+///     ChartData(label: "Apple", value: 60, color: .red),
+///     ChartData(label: "Google", value: 40, color: .blue)
+/// ])
+/// ```
 @MainActor
 public struct PieChart: View {
     private let data: [ChartData]
     @State private var sliceOffset: CGFloat = 0
     
+    /// Creates a new PieChart instance.
+    ///
+    /// - Parameter data: The array of `ChartData` contributing to the pie.
     public init(data: [ChartData]) {
         self.data = data
     }
@@ -29,6 +42,7 @@ public struct PieChart: View {
     }
 }
 
+/// An internal shape used to render individual slices of an ErsanQ PieChart.
 @MainActor
 private struct PieSlice: Shape {
     let startAngle: Angle
