@@ -21,10 +21,10 @@ let package = Package(
         .target(
             name: "ChartKit",
             dependencies: [],
-            path: "Sources/ChartKit"),
+            path: "Sources/ChartKit",
+            exclude: ["Examples"]),
         .testTarget(
             name: "ChartKitTests",
-            dependencies: ["ChartKit"],
-            path: "Tests/ChartKitTests"),
+            dependencies: ["ChartKit"]),
     ]
 )
