@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// A single data point representing a value in an ErsanQ Chart.
@@ -47,3 +48,4 @@ public struct ChartSeries: Identifiable, Sendable {
         self.color = color
     }
 }
+#endif

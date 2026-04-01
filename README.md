@@ -1,5 +1,8 @@
 # ChartKit
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FErsanQ%2FChartKit%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/ErsanQ/ChartKit)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FErsanQ%2FChartKit%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/ErsanQ/ChartKit)
+
 A beautiful, simple, and lightweight charting library for SwiftUI. Create stunning Bar, Line, and Pie charts with zero boilerplate.
 
 ![ChartKit Demo](Resources/demo.png)
@@ -15,7 +18,7 @@ A beautiful, simple, and lightweight charting library for SwiftUI. Create stunni
 ## Installation
 
 ```swift
-.package(url: "https://github.com/ErsanQ/ChartKit", from: "1.0.0")
+.package(url: "https://github.com/ErsanQ/ChartKit", from: "1.0.4")
 ```
 
 ## Usage

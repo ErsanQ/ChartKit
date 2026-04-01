@@ -22,5 +22,9 @@ let package = Package(
             name: "ChartKit",
             dependencies: [],
             path: "Sources/ChartKit"),
+        .testTarget(
+            name: "ChartKitTests",
+            dependencies: ["ChartKit"],
+            path: "Tests/ChartKitTests"),
     ]
 )

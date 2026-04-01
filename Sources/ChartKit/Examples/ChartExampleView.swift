@@ -1,5 +1,5 @@
+#if canImport(SwiftUI)
 import SwiftUI
-import ChartKit
 
 struct ChartExampleView: View {
     let salesData = [
@@ -38,7 +38,15 @@ struct ChartExampleView: View {
             }
             .padding()
         }
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
+        .background(backgroundColor.ignoresSafeArea())
+    }
+    
+    private var backgroundColor: Color {
+        #if canImport(UIKit)
+        return Color(uiColor: .systemGroupedBackground)
+        #else
+        return Color.gray.opacity(0.1)
+        #endif
     }
 }
 
@@ -49,6 +57,14 @@ struct SectionView<Content: View>: View {
     init(title: String, @ViewBuilder content: () -> Content) {
         self.title = title
         self.content = content()
+    }
+    
+    private var cardBackground: Color {
+        #if canImport(UIKit)
+        return Color(uiColor: .secondarySystemGroupedBackground)
+        #else
+        return Color.white
+        #endif
     }
     
     var body: some View {
@@ -63,7 +79,7 @@ struct SectionView<Content: View>: View {
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(cardBackground)
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 5)
         }
@@ -73,3 +89,4 @@ struct SectionView<Content: View>: View {
 #Preview {
     ChartExampleView()
 }
+#endif

@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// A premium, animated bar chart component designed for the ErsanQ ecosystem.
@@ -51,3 +52,4 @@ public struct BarChart: View {
         }
     }
 }
+#endif

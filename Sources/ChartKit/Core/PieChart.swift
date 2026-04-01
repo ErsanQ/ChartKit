@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// A stylized circular chart used for representing proportional data.
@@ -56,3 +57,4 @@ private struct PieSlice: Shape {
         return path
     }
 }
+#endif
